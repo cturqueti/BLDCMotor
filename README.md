@@ -1,11 +1,12 @@
-# BLDCMotor Library - Biblioteca de Controle para Motores BLDC  
+# BLDCMotor Library  
+## BLDCMotor Library - Biblioteca de Controle para Motores BLDC  
 PlatformIO compatilbe  
 Licença MIT  
 Versão 1.0.0  
 
 Biblioteca completa para PlatformIO com controle de motores BLDC e sistema integrado de logging usando LogLibrary.
 
-📦 Funcionalidades  
+## 📦 Funcionalidades  
 🚀 Controle completo de motor BLDC (PWM, direção, frenagem)
 
 📈 Aceleração/desaceleração suave com rampToSpeed()
@@ -18,7 +19,7 @@ Biblioteca completa para PlatformIO com controle de motores BLDC e sistema integ
 
 🔄 Suporte a encoder para controle em malha fechada
 
-📥 Instalação  
+## 📥 Instalação  
 Usando PlatformIO  
 Adicione no seu platformio.ini:  
 
@@ -43,7 +44,7 @@ Diagrama de pinos
 |BRK	| Saída	| Controle de freio |
 |SPD	| Entrada	| Sensor de velocidade |
 |ALM	| Entrada	| Detecção de falhas |
-🚀 Começo Rápido  
+## 🚀 Começo Rápido  
 ```cpp
 #include <BLDCMotor.h>
 #include <LogLibrary.h>
@@ -73,7 +74,7 @@ void loop() {
   }
 }
 ```
-📚 Referência da API  
+## 📚 Referência da API  
 Controle do Motor  
 ```cpp
 void begin(uint8_t pins[6], uint8_t diameter, uint8_t ppr);
@@ -97,7 +98,7 @@ LOG_INFO("Velocidade: %.2f m/s", motor.getSpeedMPS());
 LOG_WARN("Aviso importante");
 LOG_ERROR("Código de erro: %d", error);
 ```
-🔧 Configurações  
+## 🔧 Configurações  
 Logging  
 Configure no arquivo principal:  
 
@@ -118,7 +119,7 @@ diameter: Diâmetro da roda em mm
 
 ppr: Pulsos por revolução do encoder
 
-📊 Exemplos Práticos  
+## 📊 Exemplos Práticos  
 1. Monitoramento de Velocidade
 ```cpp
 void loop() {
@@ -141,14 +142,14 @@ void loop() {
   }
 }
 ```
-⚠️ Solução de Problemas  
+## ⚠️ Solução de Problemas  
 | Problema	| Solução |  
 |-------------|-------------|
 | Motor não responde	| Verifique alimentação e pino EN |
 | Leituras de velocidade incorretas	| Confira valor PPR e conexões do encoder |
 | Logs não aparecem	| Verifique CURRENT_LOG_LEVEL |
 | Saída serial ilegível	| Confira baud rate (normalmente 115200) |  
-📜 Licença  
+## 📜 Licença  
 MIT License - Veja LICENSE para detalhes.
 
 💡 Dica Profissional: Para produção, defina CURRENT_LOG_LEVEL como LOG_LEVEL_WARNING ou superior para reduzir overhead. Use LOG_DEBUG apenas durante desenvolvimento.
