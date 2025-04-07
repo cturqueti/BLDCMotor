@@ -34,7 +34,7 @@ Ou instale via CLI:
 pio pkg install --library "cturqueti/BLDCMotor@^1.0.0"
 pio pkg install --library "cturqueti/LogLibrary@^1.0.0"
 ```
-⚙️ Configuração de Hardware  
+## ⚙️ Configuração de Hardware  
 Diagrama de pinos  
 |Função	| Tipo do Pino	| Descrição |
 |-------------|-------------|-------------|
