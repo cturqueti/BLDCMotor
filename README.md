@@ -1,8 +1,8 @@
 # BLDCMotor Library  
 ## BLDCMotor Library - Biblioteca de Controle para Motores BLDC  
-PlatformIO compatilbe  
-Licença MIT  
-Versão 1.0.0  
+![PlatformIO](https://img.shields.io/badge/PlatformIO-Compatible-brightgreen)
+![Licenca](https://img.shields.io/badge/License-MIT-green)
+![Versao](https://img.shields.io/badge/Version-1.0.0-blue)
 
 Biblioteca completa para PlatformIO com controle de motores BLDC e sistema integrado de logging usando LogLibrary.
 
@@ -50,7 +50,7 @@ Diagrama de pinos
 #include <LogLibrary.h>
 
 // Pinos: [PWM, FWR, EN, BRK, SPD, ALM]
-const uint8_t motorPins[6] = {3, 4, 5, 6, 2, 7};
+uint8_t motorPins[6] = {3, 4, 5, 6, 2, 7};
 
 BLDCMotor motor;
 
@@ -75,7 +75,7 @@ void loop() {
 }
 ```
 ## 📚 Referência da API  
-Controle do Motor  
+### Controle do Motor  
 ```cpp
 void begin(uint8_t pins[6], uint8_t diameter, uint8_t ppr);
 void setSpeed(uint8_t speed);  // 0-255
@@ -83,14 +83,14 @@ void setDirection(Direction dir, int8_t speed = -1);
 void rampToSpeed(uint8_t target, uint16_t duration);
 void setStop();
 ```
-Telemetria
+### Telemetria
 ```cpp
 float getSpeedMPS() const;  // Velocidade em m/s
 float getRPM() const;       // Velocidade em RPM
 bool isFault() const;       // Status de falha
 void calculateSpeed();      // Atualiza cálculos de velocidade
 ```
-Logging Integrado
+### Logging Integrado
 ```cpp
 // Use estas macros no seu código:
 LOG_DEBUG("Mensagem de debug");
@@ -99,7 +99,7 @@ LOG_WARN("Aviso importante");
 LOG_ERROR("Código de erro: %d", error);
 ```
 ## 🔧 Configurações  
-Logging  
+### Logging  
 Configure no arquivo principal:  
 
 ```cpp
@@ -109,7 +109,7 @@ Configure no arquivo principal:
 Log.enableColors(true);    // Saída colorida
 Log.enableNewline(true);   // Quebras de linha automáticas
 ```
-Parâmetros do Motor  
+### Parâmetros do Motor  
 Ajuste no begin():
 
 ```cpp
