@@ -1,4 +1,4 @@
-#include "BLDCMoto.h"
+#include "BLDCMotor.h"
 
 // Inicialização da variável estática
 volatile uint32_t BLDCMotor::_speed_pulse = 0;
