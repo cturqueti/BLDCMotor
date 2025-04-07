@@ -1,4 +1,4 @@
-BLDCMotor Library - Biblioteca de Controle para Motores BLDC  
+# BLDCMotor Library - Biblioteca de Controle para Motores BLDC  
 PlatformIO compatilbe  
 Licença MIT  
 Versão 1.0.0  
@@ -35,13 +35,13 @@ pio pkg install --library "cturqueti/LogLibrary@^1.0.0"
 ```
 ⚙️ Configuração de Hardware  
 Diagrama de pinos  
-Função	Tipo do Pino	Descrição  
-PWM	Saída (PWM)	Controle de velocidade  
-FWR	Saída	Controle de direção  
-EN	Saída	Habilitação do motor  
-BRK	Saída	Controle de freio  
-SPD	Entrada	Sensor de velocidade  
-ALM	Entrada	Detecção de falhas  
+|Função	| Tipo do Pino	| Descrição  
+|PWM	| Saída (PWM)	| Controle de velocidade  
+|FWR	| Saída	| Controle de direção  
+|EN	| Saída	| Habilitação do motor  
+|BRK	| Saída	| Controle de freio  
+|SPD	| Entrada	| Sensor de velocidade  
+|ALM	| Entrada	| Detecção de falhas  
 🚀 Começo Rápido  
 ```cpp
 #include <BLDCMotor.h>
@@ -141,11 +141,11 @@ void loop() {
 }
 ```
 ⚠️ Solução de Problemas  
-Problema	Solução  
-Motor não responde	Verifique alimentação e pino EN  
-Leituras de velocidade incorretas	Confira valor PPR e conexões do encoder  
-Logs não aparecem	Verifique CURRENT_LOG_LEVEL  
-Saída serial ilegível	Confira baud rate (normalmente 115200)  
+| Problema	| Solução  
+| Motor não responde	| Verifique alimentação e pino EN  
+| Leituras de velocidade incorretas	| Confira valor PPR e conexões do encoder  
+| Logs não aparecem	| Verifique CURRENT_LOG_LEVEL  
+| Saída serial ilegível	| Confira baud rate (normalmente 115200)  
 📜 Licença  
 MIT License - Veja LICENSE para detalhes.
 
