@@ -27,7 +27,7 @@ Adicione no seu platformio.ini:
 lib_deps =
     https://github.com/cturqueti/BLDCMotor.git
     https://github.com/cturqueti/LogLibrary.git
-    ```
+```
 Ou instale via CLI:  
 
 ```bash
