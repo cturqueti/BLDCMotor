@@ -3,33 +3,50 @@
 
 BLDCMotor motor;
 
-uint8_t motorPins[] = {
-    5, 18, 19, 21, 22, 23};
-
 void setup()
 {
     Serial.begin(115200);
-    motor.begin(motorPins, 80, 2);
+
+    // Define os pinos com a nova struct
+    BLDCMotor::Pins motorPins = {
+        .pwm = 5,
+        .fwr = 18,
+        .en = 19,
+        .brk = 21,
+        .spd = 22,
+        .alm = 23};
+
+    // Define as características do motor
+    BLDCMotor::Characteristics motorCharacteristics = {
+        .wheelDiameter = 80.0, // mm
+        .ppr = 2               // Pulsos por rotação
+    };
+
+    // Inicializa o motor com a nova API
+    motor.begin(motorPins, motorCharacteristics);
+
+    // Direção inicial e velocidade
     motor.setDirection(BLDCMotor::Direction::FORWARD, 180);
 }
 
 void loop()
 {
-    motor.setSpeed(180); // Mantém a velocidade
-    delay(1000);
+    // Mantém a velocidade (opcional se já setado no setup)
+    motor.setSpeed(180);
 
-    Serial.print("Velocidade: ");
-    Serial.print(motor.getSpeedMPS());
-    Serial.print(" m/s | ");
-    Serial.print(motor.getRPM());
-    Serial.print(" RPM");
+    // Exibe os dados no monitor serial
+    LOG_INFO("Velocidade: %f m/s | %f RPM", motor.getSpeedMPS(), motor.getRPM());
 
+    // Verifica falha
     if (motor.isFault())
     {
-        Serial.println(" | Falha detectada!");
+        LOG_ERROR("Falha detectada!");
     }
     else
     {
         Serial.println(" | Sem falhas.");
+        LOG_INFO("Sem falhas.");
     }
+
+    delay(1000);
 }

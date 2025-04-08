@@ -3,13 +3,27 @@
 
 BLDCMotor motor;
 
-uint8_t motorPins[] = {
-    5, 18, 19, 21, 22, 23};
-
 void setup()
 {
     Serial.begin(115200);
-    motor.begin(motorPins, 80, 2);
+
+    // Define os pinos usando a struct Pins
+    BLDCMotor::Pins motorPins = {
+        .pwm = 5,
+        .fwr = 18,
+        .en = 19,
+        .brk = 21,
+        .spd = 22,
+        .alm = 23};
+
+    // Define as características do motor
+    BLDCMotor::Characteristics motorCharacteristics = {
+        .wheelDiameter = 80.0, // em mm
+        .ppr = 2               // pulsos por rotação
+    };
+
+    // Inicializa o motor
+    motor.begin(motorPins, motorCharacteristics);
     motor.setDirection(BLDCMotor::Direction::FORWARD);
 
     Serial.println("Rampando até velocidade 200");
