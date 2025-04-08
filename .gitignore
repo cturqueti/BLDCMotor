@@ -1,4 +1,0 @@
-.pio/
-.vscode/
-platformio.ini
-src/main.cpp    # se você não quiser que esse exemplo vá pro GitHub
