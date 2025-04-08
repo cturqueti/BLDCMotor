@@ -156,7 +156,7 @@ void BLDCMotor::rampToSpeed(uint8_t target, uint16_t duration)
 
 void BLDCMotor::motInt()
 {
-    _speed_pulse++;
+    _speed_pulse = _speed_pulse + 1;
 }
 
 void BLDCMotor::calculateSpeed()
