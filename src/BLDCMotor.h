@@ -10,6 +10,22 @@
 class BLDCMotor
 {
 public:
+    struct Pins
+    {
+        uint8_t pwm; // Controle de velocidade
+        uint8_t fwr; // Direção
+        uint8_t en;  // Enable
+        uint8_t brk; // Freio
+        uint8_t spd; // Sensor de velocidade
+        uint8_t alm; // Alarme
+    };
+
+    struct Characteristics
+    {
+        float wheelDiameter; // Diametro da roda em mm
+        uint8_t ppr;         // Pulos por revolução
+    };
+
     enum class Direction
     {
         FORWARD,
@@ -18,24 +34,10 @@ public:
         COAST
     };
 
-    enum class ControlPins
-    {
-        PWM,
-        FWR,
-        EN,
-        BRK
-    };
-
-    enum class SensorPins
-    {
-        SPD,
-        ALM
-    };
-
     BLDCMotor();
     ~BLDCMotor();
-    void begin(uint8_t pins[6], uint8_t diameter, uint8_t ppr); // Inicializa os pinos
-    void setSpeed(int speed);                                   // Controla velocidade (0-255)
+    void begin(const Pins &pins, const Characteristics &characteristics); // Inicializa os pinos
+    void setSpeed(int speed);                                             // Controla velocidade (0-255)
     void setDirection(Direction dir, int8_t speed = 255);
     float getSpeedMPS() const;
     float getRPM() const;
@@ -45,16 +47,13 @@ public:
     // static void motInt();
 
 private:
-    uint8_t _pinControl[4]; // PWM, FWR, EN, BRK
-    uint8_t _pinSensor[2];  // SPD, ALM
-    uint8_t _pinPWM, _pinFWR, _pinEN, _pinBRK;
-    uint8_t _pinSPD, _pinALM;
+    Pins _pins;
+    Characteristics _characteristics;
     float _speed_mps, _speed_rps;
     uint8_t _speed;
-    uint8_t _diameter, _ppr;
     static volatile uint32_t _speed_pulse;
 
-    static void motInt();
+    static void handleSpeedInterrupt();
     void calculateSpeed();
 };
 

@@ -1,5 +1,5 @@
 # BLDCMotor Library  
-## BLDCMotor Library - Biblioteca de Controle para Motores BLDC  
+## Biblioteca de Controle para Motores BLDC  
 ![PlatformIO](https://img.shields.io/badge/PlatformIO-Compatible-brightgreen)
 ![Licenca](https://img.shields.io/badge/License-MIT-green)
 ![Versao](https://img.shields.io/badge/Version-1.0.0-blue)
@@ -7,7 +7,7 @@
 Biblioteca completa para PlatformIO com controle de motores BLDC e sistema integrado de logging usando LogLibrary.
 
 ## 📦 Funcionalidades  
-🚀 Controle completo de motor BLDC (PWM, direção, frenagem)
+🚀 Controle completo de motor BLDC (PWM, direção, frenagem e neutro)
 
 📈 Aceleração/desaceleração suave com rampToSpeed()
 
@@ -34,6 +34,33 @@ Ou instale via CLI:
 pio pkg install --library "cturqueti/BLDCMotor@^1.0.0"
 pio pkg install --library "cturqueti/LogLibrary@^1.0.0"
 ```
+---
+## 🛠️ Estrutura da Classe
+
+```cpp
+BLDCMotor motor;
+motor.begin(pins, characteristics);
+motor.setDirection(BLDCMotor::Direction::FORWARD);
+motor.setSpeed(128);
+```
+### Estrutura 'Pins'
+```cpp
+BLDCMotor::Pins {
+  uint8_t pwm; // Pino PWM (velocidade)
+  uint8_t fwr; // Direção
+  uint8_t en;  // Enable
+  uint8_t brk; // Freio
+  uint8_t spd; // Sensor de velocidade (opcional)
+  uint8_t alm; // Alarme (opcional)
+};
+```
+### Estrutura 'Characteristics'
+```cpp
+BLDCMotor::Characteristics {
+  float wheelDiameter; // Diâmetro da roda em mm
+  uint8_t ppr;         // Pulsos por rotação
+};
+```
 ## ⚙️ Configuração de Hardware  
 Diagrama de pinos  
 |Função	| Tipo do Pino	| Descrição |
@@ -44,40 +71,39 @@ Diagrama de pinos
 |BRK	| Saída	| Controle de freio |
 |SPD	| Entrada	| Sensor de velocidade |
 |ALM	| Entrada	| Detecção de falhas |
+
 ## 🚀 Começo Rápido  
 ```cpp
 #include <BLDCMotor.h>
 #include <LogLibrary.h>
 
-// Pinos: [PWM, FWR, EN, BRK, SPD, ALM]
-uint8_t motorPins[6] = {3, 4, 5, 6, 2, 7};
-
 BLDCMotor motor;
 
 void setup() {
-  Serial.begin(115200);
-  Log.begin(&Serial);
-  Log.setLogLevel(LogLevel::DEBUG);
-  
-  motor.begin(motorPins, 60, 20); // Diâmetro 60mm, 20 PPR
-  LOG_INFO("Motor inicializado");
+    BLDCMotor::Pins pins = {
+      .pwm = 23,
+      .fwr = 19,
+      .en = 18,
+      .brk = 5,
+      .spd = NC,
+      .alm = NC
+    };
+    BLDCMotor::Characteristics characteristics = {65.0, 20};
+
+    motor.begin(pins, characteristics);
+    motor.setDirection(BLDCMotor::Direction::FORWARD);
+    motor.setSpeed(150);
 }
 
 void loop() {
-  // Exemplo básico
-  motor.setDirection(BLDCMotor::Direction::FORWARD, 128);
-  LOG_DEBUG("Motor configurado para frente a 50%% da velocidade");
-  
-  if(motor.isFault()) {
-    LOG_ERROR("Falha detectada no motor!");
-    motor.setStop();
-  }
+    // Nada aqui
 }
+
 ```
 ## 📚 Referência da API  
 ### Controle do Motor  
 ```cpp
-void begin(uint8_t pins[6], uint8_t diameter, uint8_t ppr);
+void begin(const Pins &pins, const Characteristics &characteristics);
 void setSpeed(uint8_t speed);  // 0-255
 void setDirection(Direction dir, int8_t speed = -1);
 void rampToSpeed(uint8_t target, uint16_t duration);
@@ -113,7 +139,7 @@ Log.enableNewline(true);   // Quebras de linha automáticas
 Ajuste no begin():
 
 ```cpp
-motor.begin(pins, diameter, ppr);
+motor.begin(pins, characteristics);
 ```
 diameter: Diâmetro da roda em mm
 
