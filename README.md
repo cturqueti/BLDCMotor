@@ -176,6 +176,6 @@ void loop() {
 | Logs não aparecem	| Verifique CURRENT_LOG_LEVEL |
 | Saída serial ilegível	| Confira baud rate (normalmente 115200) |  
 ## 📜 Licença  
-MIT License - Veja LICENSE para detalhes.
-
+MIT License - Veja LICENSE para detalhes.  
+---
 💡 Dica Profissional: Para produção, defina CURRENT_LOG_LEVEL como LOG_LEVEL_WARNING ou superior para reduzir overhead. Use LOG_DEBUG apenas durante desenvolvimento.
