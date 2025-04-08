@@ -1,2 +1,2 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Força o uso de LF (Unix) em todos os arquivos de texto
+* text=auto eol=lf
