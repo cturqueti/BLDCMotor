@@ -26,17 +26,17 @@ void setup()
     motor.begin(motorPins, motorCharacteristics);
     motor.setDirection(BLDCMotor::Direction::FORWARD);
 
-    Serial.println("Rampando até velocidade 200");
+    LOG_INFO("Rampando até velocidade 200");
     motor.rampToSpeed(200, 3000); // 3 segundos
 
     delay(2000);
 
-    Serial.println("Rampando até velocidade 100");
+    LOG_INFO("Rampando até velocidade 100");
     motor.rampToSpeed(100, 2000); // 2 segundos
 
     delay(2000);
 
-    Serial.println("Parando");
+    LOG_INFO("Parando");
     motor.setStop();
 }
 

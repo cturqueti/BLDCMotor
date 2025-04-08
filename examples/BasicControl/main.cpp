@@ -11,11 +11,10 @@ void setup()
     BLDCMotor::Pins motorPins = {
         .pwm = 5,
         .fwr = 18,
-        .en  = 19,
+        .en = 19,
         .brk = 21,
         .spd = 22,
-        .alm = 23
-    };
+        .alm = 23};
 
     // Características do motor
     BLDCMotor::Characteristics motorCharacteristics = {
@@ -26,23 +25,23 @@ void setup()
     // Inicializa o motor com os parâmetros
     motor.begin(motorPins, motorCharacteristics);
 
-    Serial.println("Motor iniciado em modo FORWARD");
+    LOG_INFO("Motor iniciado em modo FORWARD");
     motor.setDirection(BLDCMotor::Direction::FORWARD, 128);
 }
 
 void loop()
 {
     delay(5000);
-    Serial.println("Mudando para REVERSE");
+    LOG_INFO("Mudando para REVERSE");
     motor.setDirection(BLDCMotor::Direction::REVERSE, 128);
-    
+
     delay(5000);
-    Serial.println("Parando (BRAKE)");
+    LOG_INFO("Parando (BRAKE)");
     motor.setDirection(BLDCMotor::Direction::BRAKE);
-    
+
     delay(3000);
-    Serial.println("Rodando livre (COAST)");
+    LOG_INFO("Rodando livre (COAST)");
     motor.setDirection(BLDCMotor::Direction::COAST);
-    
+
     delay(3000);
 }
