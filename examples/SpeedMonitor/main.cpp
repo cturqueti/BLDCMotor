@@ -34,6 +34,8 @@ void loop()
     // Mantém a velocidade (opcional se já setado no setup)
     motor.setSpeed(180);
 
+    motor.updateSpeed();
+
     // Exibe os dados no monitor serial
     LOG_INFO("Velocidade: %f m/s | %f RPM", motor.getSpeedMPS(), motor.getRPM());
 

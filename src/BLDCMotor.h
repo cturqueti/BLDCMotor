@@ -44,7 +44,7 @@ public:
     bool isFault() const;
     void setStop();
     void rampToSpeed(uint8_t target, uint16_t duration);
-    // static void motInt();
+    void updateSpeed();
 
 private:
     Pins _pins;
@@ -54,7 +54,6 @@ private:
     static volatile uint32_t _speed_pulse;
 
     static void handleSpeedInterrupt();
-    void calculateSpeed();
 };
 
 #endif
