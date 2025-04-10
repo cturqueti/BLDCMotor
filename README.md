@@ -1,8 +1,9 @@
 # BLDCMotor Library  
 ## Biblioteca de Controle para Motores BLDC  
-![PlatformIO](https://img.shields.io/badge/PlatformIO-Compatible-brightgreen)
-![Licenca](https://img.shields.io/badge/License-MIT-green)
-![Versao](https://img.shields.io/badge/Version-1.0.0-blue)
+
+![PlatformIO](https://img.shields.io/badge/PlatformIO-Compatible-orange?style=plastic&logo=platformio)  
+![Licença](https://img.shields.io/badge/licen%C3%A7a-Apache%202.0-blue.svg?style=plastic&logo=apache)  
+![Versão](https://img.shields.io/badge/Vers%C3%A3o-1.0.0-green.svg?style=plastic&logo=github)  
 
 Biblioteca completa para PlatformIO com controle de motores BLDC e sistema integrado de logging usando LogLibrary.
 
@@ -175,8 +176,24 @@ void loop() {
 | Leituras de velocidade incorretas	| Confira valor PPR e conexões do encoder |
 | Logs não aparecem	| Verifique CURRENT_LOG_LEVEL |
 | Saída serial ilegível	| Confira baud rate (normalmente 115200) |  
-## 📜 Licença  
-MIT License - Veja LICENSE para detalhes.  
+
+## 📜 Licença
+Copyright 2025 cturqueti
+
+Licenciado sob a Apache License, Versão 2.0 (a "Licença");
+você não pode usar este arquivo exceto em conformidade com a Licença.
+Você pode obter uma cópia da Licença em:
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+A menos que exigido por lei aplicável ou acordado por escrito, o software
+distribuído sob a Licença é distribuído "COMO ESTÁ",
+SEM GARANTIAS OU CONDIÇÕES DE QUALQUER TIPO, expressas ou implícitas.
+Consulte a Licença para o idioma específico que rege as permissões e
+limitações sob a Licença.
+
+Consulte o arquivo [LICENSE](LICENSE) para o texto completo da licença e
+[NOTICE](NOTICE) para informações sobre atribuições e histórico de modificações.
 
 ---
 💡 Dica Profissional: Para produção, defina CURRENT_LOG_LEVEL como LOG_LEVEL_WARNING ou superior para reduzir overhead. Use LOG_DEBUG apenas durante desenvolvimento.

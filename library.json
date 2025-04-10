@@ -25,6 +25,7 @@
     "type": "git",
     "url": "https://github.com/cturqueti/BLDCMotor.git"
   },
+  "license": "Apache-2.0",
   "homepage": "https://github.com/cturqueti/BLDCMotor",
   "examples": [
     "examples/BasicControl",
